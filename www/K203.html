@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="components/loader.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/default.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+    </script>
+</head>
+
+<body>
+    <div class="header-contents">
+        <h1>課題203</h1>
+        <h2>やることリスト２０１9</h2> </div>
+    <!-- /.header-contents -->
+    <div class="main-wrapper">
+        <section>
+            <div id="main1">
+                <h1>2018年やることリスト！</h1> <button onclick="keikaku()">リスト表示</button>
+                <ul id="list"> </ul>
+            </div>
+            <div id="main2">
+                <h1>進捗状況</h1> <button onclick="sintyoku()">進捗状況表示</button> <br>
+                <ul id="list2"> </ul>
+            </div>
+            
+            <br><br>
+            <a href="index.html">戻る</a>
+        </section>
+    </div>
+    <!-- /.main-wrapper -->
+    <footer>課題実習用テンプレ（フッター）</footer>
+    <script>
+        var todo = ["プログラミング能力の向上", "WEBアプリの公開", "個人ブログを立ち上げる", "年3回、旅行に行く！"];
+        var jokyo = ["✖", "✖", "〇", "✖"];
+        var flg = 0;
+        
+        function keikaku()
+        {
+            alert("リストを表示します");
+            //配列の最後に追加する
+            todo.push("数学を勉強し直す");
+            
+            if (flg === 1)todo.pop();
+            alert(todo.length + "個の要素があります");
+            
+            document.getElementById("list").innerHTML ="";
+            for (var i = 0; i < todo.length; i++)
+            {
+                //箇条書き要素<li>を追加
+                var li = document.createElement("li");
+                //箇条書きの中身
+                li.textContent = todo[i];
+                //箇条書きを#listに挿入
+                document.getElementById("list")
+                    .appendChild(li);
+            }
+            flg = 1;
+
+        }
+
+        function sintyoku()
+        {
+            alert("進捗状況を表示します");
+             jokyo.push("△");
+             document.getElementById("list2").innerHTML ="";
+            for (var i = 0; i < todo.length; i++) {
+                var li2 = document.createElement("li");
+                li2.innerHTML += "<b>" + todo[i] + "</b>の状況 ⇒ " + jokyo[i];
+                document.getElementById("list2").appendChild(li2);
+            }
+        }
+    </script>
+</body>
+
+</html>

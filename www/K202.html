@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <script src="components/loader.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/default.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        var answerList = [
+            "友情", "愛", "プライド","お金", "夢"
+        ];
+
+        var answerList2 = [
+            "おだてられると調子に乗るタイプ", 
+            "外見よりも内面的に自信ありのタイプ", 
+            "必要以上に外見を気にしないタイプ",
+            "実は容姿にかなり自信ありのタイプ"
+        ];
+            
+        function showAnswer() {
+            var choiceNo = document.getElementById("choiceList").value;
+            document.getElementById("answer").innerHTML = "";
+            document.getElementById("answer").innerHTML += "この心理テストは、あなたが一番大事にしているものを表しています。<br>";
+            document.getElementById("answer").innerHTML += "あなたが一番大事にしているものは、「" + answerList[choiceNo] + "」です。";
+            document.getElementById("next").style.display="block";
+        }
+
+        function showAnswer2() {
+            var choiceNo2 = document.getElementById("choiceList2").value;
+            document.getElementById("answer2").innerHTML = "";
+            document.getElementById("answer2").innerHTML += "この心理テストでは、自分を魅力的に映す鏡を想像することで外見に対する自信を探ることができます。<br>";
+            document.getElementById("answer2").innerHTML += "あなたは、「" + answerList2[choiceNo2] + "」です。";
+        }
+
+        function hideData(x,y){
+           document.getElementById(x).style.display="none";
+           document.getElementById(y).style.display="block";
+        }
+    </script>
+</head>
+<body>
+    <div class="header-contents">
+        <h1>課題202</h1>
+        <h2>心理テスト改訂版</h2>
+    </div><!-- /.header-contents -->
+
+    <div class="main-wrapper">
+        
+             <div id="menu１" style="display:block">
+                <B>問1</B><BR>
+                <p>あなたが森の中を一人で散歩していると、ある生き物に出会いました。その生き物はどれですか？</p>
+                <select id="choiceList">
+                  <option value="0">鳥</option>
+                  <option value="1">リス</option>
+                  <option value="2">クマ</option>
+                  <option value="3">人間</option>
+                  <option value="4">妖精</option>
+                </select>
+                <button onclick="showAnswer()">回答する</button>
+                <hr>
+                <p id="answer"></p>
+                <button id="next" style="display:none" onclick="hideData('menu１','menu2')">次へ</button>
+             </div>
+             <div id="menu2" style="display:none">
+                <B>問2</B><BR>
+                <p>実際の姿よりも魅力的に人間を映し出す鏡があります。その不思議な鏡はどんな形をしていますか?</p>
+                <select id="choiceList2">
+                  <option value="0">丸い形の鏡</option>
+                  <option value="1">四角形の鏡</option>
+                  <option value="2">三角形の鏡</option>
+                  <option value="3">楕円形の鏡</option>
+                </select>
+                <button onclick="showAnswer2()">回答する</button>
+                <hr>
+                <p id="answer2"></p>
+             </div>
+      
+        
+                     
+        <br><br>
+        <a href="index.html">戻る</a>
+    </div><!-- /.main-wrapper -->
+
+    <footer>２Ｇ１（９９番）船橋太郎</footer>
+    <script>
+        function calcTotal(){
+          var max = document.getElementById("max").value;
+          var total = 0;
+    
+          //入力が数値でない場合はエラー  
+          if (isNaN(max)){
+            alert("数値を入力してください");
+          }else{
+            for(var i=1; i<=max; i++){
+              total += i;
+            }
+            
+            document.getElementById("val").textContent = max;
+            document.getElementById("total").textContent = total;
+          }
+        }
+    
+        function cls(){
+          //alert("clear");
+          document.getElementById("max").value = "";
+          document.getElementById("val").textContent = "";
+          document.getElementById("total").textContent = "";
+        }
+      
+    </script>        
+</body>
+</html>
